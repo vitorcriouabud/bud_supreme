@@ -9,4 +9,4 @@
 - [x] Implementar um módulo de segurança e validação (`bud_guardian_service/guardian.py`)
 - [x] Integrar `CodeGuardian` no `CommandInterpreter`
 - [x] Configurar variáveis de ambiente (`.env`)
-- [ ] Integrar com GitHub
+- [x] Integrar com GitHub
