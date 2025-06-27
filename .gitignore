@@ -3,3 +3,10 @@ __pycache__/
 *.pyc
 
 
+
+
+sorte_dashboard/venv/
+__pycache__/
+*.pyc
+
+
