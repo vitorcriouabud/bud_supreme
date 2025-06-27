@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Instala as dependências listadas no requirements.txt
-RUN pip install --upgrade pip && pip install -r requisitos.txt
+ && pip install -r requirements.txt
 
 # Executa o sistema
 CMD ["python", "essencial/main.py"]
