@@ -6,3 +6,14 @@ PyYAML
 
 python-dotenv
 
+
+astor
+
+
+pytest
+pytest-json-report
+psutil
+
+
+GitPython
+

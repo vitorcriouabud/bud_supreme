@@ -10,3 +10,6 @@
 - [x] Integrar `CodeGuardian` no `CommandInterpreter`
 - [x] Configurar variáveis de ambiente (`.env`)
 - [x] Integrar com GitHub
+- [x] Instalar Pylint para validação de código
+- [ ] Implementar testes automatizados robustos
+- [ ] Implementar verificações de segurança mais avançadas

@@ -1,11 +1,9 @@
-from telegram_integration.telegram_bot import TelegramBot
+from core.main_controller import start_main_controller
 
 # Código principal da Bud
 
 if __name__ == '__main__':
-    print('Bud ativada')
-    # Exemplo de como a Bud pode ser iniciada
-    # bot = TelegramBot()
-    # bot.start()
+    print('Bud ativada e iniciando controlador principal...')
+    start_main_controller()
 
 
