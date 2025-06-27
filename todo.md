@@ -1,0 +1,12 @@
+- [x] Atualizar o arquivo requirements.txt
+- [x] Criar arquivos `__init__.py` nos diretórios para torná-los pacotes Python
+- [x] Verificar e ajustar os caminhos de importação nos arquivos movidos
+- [x] Confirmar a nova estrutura de diretórios
+- [x] Implementar um módulo de edição de código (`bud_editor_service/editor.py`)
+- [x] Implementar um módulo de interpretação de comandos (`bud_interpreter_service/interpreter.py`)
+- [x] Testar a auto-modificação básica
+- [x] Integrar `gpt_bridge.py` com a API OpenAI (placeholder)
+- [x] Implementar um módulo de segurança e validação (`bud_guardian_service/guardian.py`)
+- [x] Integrar `CodeGuardian` no `CommandInterpreter`
+- [x] Configurar variáveis de ambiente (`.env`)
+- [ ] Integrar com GitHub

@@ -1,0 +1,11 @@
+# Docker Compose para os serviços do Bud
+version: '3.8'
+services:
+  interpreter:
+    build: ./bud_interpreter_service
+  editor:
+    build: ./bud_editor_service
+  guardian:
+    build: ./bud_guardian_service
+  commander:
+    build: ./bud_commander_service
