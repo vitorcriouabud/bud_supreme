@@ -1,14 +1,9 @@
-# Usa imagem oficial do Python
-FROM python:3.10
+FROM python:3.11-slim
 
-# Define diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia os arquivos do projeto para dentro do container
 COPY . .
 
-# Instala as dependências listadas no requirements.txt
- && pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Executa o sistema
-CMD ["python", "essencial/main.py"]
+CMD ["python", "main.py"]
