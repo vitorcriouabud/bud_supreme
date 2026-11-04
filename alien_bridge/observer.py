@@ -82,7 +82,7 @@ def analyze_snapshot(data):
         raise SnapshotError("Campos obrigatórios ausentes no snapshot")
     if data["schema_version"] != SCHEMA_VERSION:
         raise SnapshotError("Versão do contrato não suportada")
-    if data["source"] not in SOURCES:
+    if not isinstance(data["source"], str) or data["source"] not in SOURCES:
         raise SnapshotError("Somente origem synthetic/historical/demo é aceita")
     symbol = data["symbol"]
     if not isinstance(symbol, str) or not 1 <= len(symbol) <= 25 or not symbol.isascii():
@@ -90,7 +90,7 @@ def analyze_snapshot(data):
     if not all(c.isalnum() or c in "._-" for c in symbol):
         raise SnapshotError("Símbolo contém caracteres não permitidos")
     timeframe = data["timeframe"]
-    if timeframe not in TIMEFRAMES:
+    if not isinstance(timeframe, str) or timeframe not in TIMEFRAMES:
         raise SnapshotError("Timeframe não suportado")
     interval = TIMEFRAMES[timeframe]
     captured = _utc(data["captured_at"], "captured_at")

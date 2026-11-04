@@ -113,6 +113,14 @@ class AlienObserverTests(unittest.TestCase):
         with self.assertRaises(SnapshotError):
             analyze_snapshot(sample)
 
+    def test_wrong_type_source_and_timeframe_rejected_safely(self):
+        for field, value in [("source", []), ("timeframe", {})]:
+            with self.subTest(field=field):
+                sample = self.changed()
+                sample[field] = value
+                with self.assertRaises(SnapshotError):
+                    analyze_snapshot(sample)
+
     def test_max_bars_enforced(self):
         sample = self.changed()
         sample["bars"] = sample["bars"] * 1001
