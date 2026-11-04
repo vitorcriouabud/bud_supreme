@@ -23,26 +23,38 @@ class Logger:
         }
         self.logger.setLevel(level_mapping.get(log_level.upper(), logging.INFO))
         
-        # Evitar duplicação de handlers
-        if not self.logger.handlers:
-            # Formatter para logs estruturados
-            formatter = logging.Formatter(
-                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-            )
-            
-            # Handler para console
+        # Mesmo nome pode ser reutilizado; o arquivo de log precisa ser o solicitado.
+        formatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+        if not any(
+            isinstance(handler, logging.StreamHandler)
+            and not isinstance(handler, logging.FileHandler)
+            for handler in self.logger.handlers
+        ):
             console_handler = logging.StreamHandler()
             console_handler.setFormatter(formatter)
             self.logger.addHandler(console_handler)
-            
-            # Handler para arquivo (se especificado)
-            if log_file:
-                # Criar diretório de logs se não existir
-                log_dir = os.path.dirname(log_file)
-                if log_dir and not os.path.exists(log_dir):
-                    os.makedirs(log_dir)
-                
-                file_handler = logging.FileHandler(log_file)
+
+        if log_file:
+            target = os.path.abspath(log_file)
+            log_dir = os.path.dirname(target)
+            if log_dir:
+                os.makedirs(log_dir, exist_ok=True)
+
+            # Remover arquivos antigos do mesmo logger para evitar gravar em
+            # caminhos de testes anteriores (possivelmente já excluídos).
+            for handler in list(self.logger.handlers):
+                if isinstance(handler, logging.FileHandler) and os.path.abspath(handler.baseFilename) != target:
+                    self.logger.removeHandler(handler)
+                    handler.close()
+
+            if not any(
+                isinstance(handler, logging.FileHandler)
+                and os.path.abspath(handler.baseFilename) == target
+                for handler in self.logger.handlers
+            ):
+                file_handler = logging.FileHandler(target, encoding='utf-8')
                 file_handler.setFormatter(formatter)
                 self.logger.addHandler(file_handler)
     

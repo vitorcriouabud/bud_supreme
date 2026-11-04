@@ -64,7 +64,7 @@ Olá! Eu sou a Sorte, sua IA de trading autônoma.
 • "criar backup"
 • "status do sistema"
 
-Estou pronta para operar! 🚀
+Pronta para criar diagnósticos e propostas; trading real desativado.
         """
         
         await update.message.reply_text(welcome_message, parse_mode='Markdown')
@@ -137,7 +137,7 @@ Estou pronta para operar! 🚀
 
 **Exemplo de uso:**
 Envie: "seja mais agressiva com tendência de alta"
-Resultado: Sorte modificará automaticamente os parâmetros de trading
+Resultado: será criada uma proposta para revisão, sem executar trading real
 
 🚀 **Estou sempre aprendendo e evoluindo!**
         """
@@ -192,17 +192,19 @@ Backup seguro e pronto para restauração se necessário.
             
             if result['success']:
                 success_message = f"""
-✅ **Comando executado com sucesso!**
+✅ **Comando processado!**
 
 📝 **Comando:** {command}
 📂 **Categoria:** {result.get('category', 'N/A')}
-📁 **Arquivo modificado:** {result.get('target_file', 'N/A')}
+📁 **Arquivo alvo (não alterado):** {result.get('target_file', 'N/A')}
+📄 **Proposta:** {result.get('proposal_created', 'Não aplicável')}
+💾 **Backup:** {result.get('backup_created', 'Não aplicável')}
 🧠 **Modelo usado:** {result.get('model_used', 'N/A')}
-🧪 **Testes:** {'✅ Passou' if result.get('tests_passed') else '⚠️ Verificar'}
+🧪 **Testes:** {'✅ Passou' if result.get('tests_passed') is True else ('❌ Falhou' if result.get('tests_passed') is False else 'Não executados')}
 
 💡 **Explicação:** {result.get('explanation', 'Comando executado')}
 
-🚀 **Sistema atualizado e operacional!**
+🔒 **Trading real desativado. Código requer revisão.**
                 """
                 await update.message.reply_text(success_message, parse_mode='Markdown')
                 

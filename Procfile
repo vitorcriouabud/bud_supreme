@@ -1,2 +1,1 @@
-web: python core/main.py
-
+web: python -m core.main
