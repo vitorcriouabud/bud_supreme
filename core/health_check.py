@@ -1,44 +1,33 @@
+"""Saúde HTTP: não confundir processo ativo com IA/trading validados."""
 from flask import Flask, jsonify
 import os
-import threading
 import time
 
 app = Flask(__name__)
 
-@app.route('/health')
+
+@app.route("/health")
 def health_check():
-    """
-    Endpoint de health check para Railway.
-    """
     return jsonify({
-        'status': 'healthy',
-        'service': 'sorte-ai',
-        'timestamp': time.time(),
-        'components': {
-            'interpreter': 'active',
-            'telegram_bot': 'active',
-            'local_llm': 'active'
-        }
+        "status": "alive", "service": "bud-supreme",
+        "timestamp": time.time(),
+        "checks": {"http": "alive", "llm": "not_checked",
+                   "telegram": "not_checked", "mt5_trading": "disabled"},
     })
 
-@app.route('/')
+
+@app.route("/")
 def root():
-    """
-    Endpoint raiz.
-    """
     return jsonify({
-        'message': 'Sorte AI - Sistema Autônomo de Trading',
-        'status': 'operational',
-        'version': '1.0.0'
+        "service": "bud-supreme", "status": "alive",
+        "trading_real": "disabled", "code_apply_mode": "review_only",
     })
+
 
 def start_health_server():
-    """
-    Inicia servidor de health check em thread separada.
-    """
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=False)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     start_health_server()
-

@@ -1,0 +1,13 @@
+.git
+.env
+.env.*
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+sorte_dashboard/venv/
+venv/
+.venv/
+backups/
+proposals/
+**/*.db
+*.zip
