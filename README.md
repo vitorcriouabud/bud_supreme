@@ -31,3 +31,8 @@ Sem trading real, ordens ao mercado, Pix, saques ou alterações automáticas em
 produção. Esta branch não acrescenta integração com MetaTrader 5.
 Para usar Telegram, configure TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID fora do Git.
 Revise o pull request e valide os testes antes de mesclar.
+
+## Ponte Bud–ALIEN (offline)
+
+Teste sem MetaTrader, rede ou credenciais: `python -m alien_bridge examples/alien_xauusd_snapshot.json`.
+Contrato, limites e critérios em [docs/ALIEN_BRIDGE_MVP.md](docs/ALIEN_BRIDGE_MVP.md).
